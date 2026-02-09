@@ -1,9 +1,10 @@
 // --- CONFIGURATION ---
-const secretPassword = "1812"; // CHANGE THIS TO YOUR PASSWORD
+const secretPassword = "0214"; // CHANGE THIS TO YOUR PASSWORD
 const reasons = [
     "Because you make me smile every single day.",
     "Because you have the most beautiful smile.",
     "Because you gave me something ;) ❤.",
+    "Because you have the best heart.",
     "Because I can be myself around you."
 ];
 // ---------------------
@@ -32,8 +33,15 @@ loginBtn.addEventListener('click', () => {
         // START MUSIC
         playMusic();
         
-        // Start Hearts
-        createHearts(20);
+        // START CONSTANT HEART STREAM
+        // This creates 1 heart every 300 milliseconds (0.3 seconds)
+        setInterval(() => {
+            createHearts(1);
+        }, 300);
+        
+        // Initial Burst for effect
+        createHearts(30);
+        
     } else {
         // Password Wrong:
         errorMsg.style.display = 'block';
@@ -60,7 +68,6 @@ function playMusic() {
         musicBtn.innerText = "⏸ Pause Music";
     }).catch(e => {
         console.log("Audio issue:", e);
-        // If auto-play fails, button will allow them to start it manually
         musicBtn.innerText = "▶ Play Music";
         isPlaying = false;
     });
@@ -70,23 +77,38 @@ function playMusic() {
 reasonBtn.addEventListener('click', () => {
     const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
     reasonDisplay.innerText = randomReason;
+    
+    // Add a small extra burst when clicking
     createHearts(5);
 });
 
 // --- Floating Hearts Helper Function ---
 function createHearts(amount) {
     const container = document.getElementById('heart-container');
+    const colors = ["#ff4d6d", "#c9184a", "#ff8fa3", "#ffb3c1"]; // Different pinks
+
     for (let i = 0; i < amount; i++) {
         const heart = document.createElement('div');
         heart.classList.add('heart');
+        
+        // Random Position
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = Math.random() * 2 + 3 + "s"; 
-        heart.style.opacity = Math.random();
+        
+        // Random Animation Duration (between 3s and 8s)
+        heart.style.animationDuration = Math.random() * 5 + 3 + "s"; 
+        
+        // Random Size
         heart.style.width = Math.random() * 20 + 10 + "px";
         heart.style.height = heart.style.width; 
         
+        // Random Color (Optional: makes it look more vibrant)
+        heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
         container.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
+        
+        // Clean up heart after 8 seconds so the browser doesn't get slow
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
     }
 }
-
