@@ -1,10 +1,12 @@
 // --- CONFIGURATION ---
-const secretPassword = "1218"; // CHANGE THIS TO YOUR PASSWORD
+const secretPassword = "1812"; // CHANGE THIS TO YOUR PASSWORD
 const reasons = [
-    "Because you make me smile every single day.",
+    "Because you make me laugh every single day.",
     "Because you have the most beautiful smile.",
-    "Because you gave me something ;) ❤.",
-    "Because I can be myself around you."
+    "Because you support my dreams.",
+    "Because you make the best coffee.",
+    "Because I can be myself around you.",
+    "Because you are my best friend."
 ];
 // ---------------------
 
@@ -14,9 +16,11 @@ const passwordInput = document.getElementById('passwordInput');
 const errorMsg = document.getElementById('error-msg');
 const audio = document.getElementById('bgMusic');
 
-const yesBtn = document.getElementById('yesBtn');
 const reasonBtn = document.getElementById('reasonBtn');
 const reasonDisplay = document.getElementById('reasonDisplay');
+const musicBtn = document.getElementById('musicControlBtn');
+
+let isPlaying = false;
 
 // 1. LOGIN LOGIC
 loginBtn.addEventListener('click', () => {
@@ -27,8 +31,8 @@ loginBtn.addEventListener('click', () => {
             loginScreen.style.display = 'none'; // Remove
         }, 1000);
         
-        // START MUSIC AUTOMATICALLY
-        audio.play().catch(e => console.log("Audio issue:", e));
+        // START MUSIC
+        playMusic();
         
         // Start Hearts
         createHearts(20);
@@ -39,12 +43,30 @@ loginBtn.addEventListener('click', () => {
     }
 });
 
-// 2. The "YES" Button
-yesBtn.addEventListener('click', () => {
-    createHearts(100);
-    alert("I love you so much! ❤");
-    yesBtn.innerHTML = "Forever & Always ❤";
+// 2. Music Control Button
+musicBtn.addEventListener('click', () => {
+    if (isPlaying) {
+        audio.pause();
+        musicBtn.innerText = "▶ Play Music";
+        isPlaying = false;
+    } else {
+        audio.play();
+        musicBtn.innerText = "⏸ Pause Music";
+        isPlaying = true;
+    }
 });
+
+function playMusic() {
+    audio.play().then(() => {
+        isPlaying = true;
+        musicBtn.innerText = "⏸ Pause Music";
+    }).catch(e => {
+        console.log("Audio issue:", e);
+        // If auto-play fails, button will allow them to start it manually
+        musicBtn.innerText = "▶ Play Music";
+        isPlaying = false;
+    });
+}
 
 // 3. The "Reasons" Generator
 reasonBtn.addEventListener('click', () => {
