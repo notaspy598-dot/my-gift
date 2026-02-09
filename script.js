@@ -2,7 +2,7 @@
 const reasons = [
     "Because you make me smile every single day.",
     "Because you have the most beautiful smile.",
-    "Because you gave me something ❤.",
+    "Because you gave me something ;) ❤.",
     "Because I can be myself around you."
 ];
 // ---------------------
@@ -52,3 +52,4 @@ function createHearts(amount) {
         setTimeout(() => heart.remove(), 6000);
     }
 }
+
