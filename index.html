@@ -3,49 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day!</title>
+    <title>For You ❤</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div id="heart-container"></div>
-
-    <div class="card">
-        <div class="photo-frame">
-            <img src="photo.jpeg" alt="Us" class="main-photo">
-        </div>
-
-        <div class="content">
-            <h1>Happy Valentine's Day</h1>
-            
-            <p class="message">
-                To my favorite person, <br>
-                Every day with you is a gift.
-            </p>
-
-            <div class="poem">
-                <p>
-                    "In your smile, I see something more beautiful than the stars.<br>
-                    In your eyes, I found my home.<br>
-                    In your heart, I found my love."
-                </p>
-            </div>
-            <div class="proposal-section">
-                <h2>Will you be my Valentine?</h2>
-                <div class="buttons">
-                    <button id="yesBtn">YES! ❤</button>
-                </div>
-            </div>
-
-            <div class="reasons-section">
-                <button id="reasonBtn" class="secondary-btn">Why do I feel this way?...</button>
-                <p id="reasonDisplay"></p>
-            </div>
-            
-            <audio id="bgMusic" src="song.mp3"></audio>
+    <div id="login-screen">
+        <div class="login-box">
+            <h1>Login to My Heart</h1>
+            <p>Enter our special date (MMDD) to enter:</p>
+            <input type="password" id="passwordInput" placeholder="ex: 0214">
+            <button id="loginBtn">Unlock ❤</button>
+            <p id="error-msg" style="color: red; display: none; margin-top: 10px;">Try again, my love!</p>
         </div>
     </div>
+
+    <div id="main-content">
+        <div id="heart-container"></div>
+
+        <div class="card">
+            <div class="photo-frame">
+                <img src="photo.jpeg" alt="Us" class="main-photo">
+            </div>
+
+            <div class="content">
+                <h1>Happy Valentine's Day</h1>
+                
+                <p class="message">
+                    To my favorite person, <br>
+                    Every day with you is a gift.
+                </p>
+
+                <div class="poem">
+                    <p>
+                        "In your smile, I see something more beautiful than the stars.<br>
+                        In your eyes, I found my home.<br>
+                        In your heart, I found my love."
+                    </p>
+                </div>
+
+                <div class="proposal-section">
+                    <h2>Will you be my Valentine?</h2>
+                    <div class="buttons">
+                        <button id="yesBtn">YES! ❤</button>
+                    </div>
+                </div>
+
+                <div class="reasons-section">
+                    <button id="reasonBtn" class="secondary-btn">Tell me why I love you...</button>
+                    <p id="reasonDisplay"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <audio id="bgMusic" src="song.mp3" loop></audio>
 
     <script src="script.js"></script>
 </body>
