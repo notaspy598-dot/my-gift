@@ -21,7 +21,7 @@ yesBtn.addEventListener('click', () => {
     createHearts(100);
     
     // Alert Message
-    alert("I yearn for you so much! ❤");
+    alert("I like you so much! ❤");
     
     // Change button text
     yesBtn.innerHTML = "Forever & Always ❤";
@@ -52,4 +52,3 @@ function createHearts(amount) {
         setTimeout(() => heart.remove(), 6000);
     }
 }
-
