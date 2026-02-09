@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const secretPassword = "0214"; // CHANGE THIS TO YOUR PASSWORD
+const secretPassword = "1812"; // CHANGE THIS TO YOUR PASSWORD
 const reasons = [
     "Because you make me smile every single day.",
     "Because you have the most beautiful smile.",
@@ -112,3 +112,4 @@ function createHearts(amount) {
         }, 8000);
     }
 }
+
