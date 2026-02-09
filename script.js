@@ -1,4 +1,5 @@
 // --- CONFIGURATION ---
+const secretPassword = "1218"; // CHANGE THIS TO YOUR PASSWORD
 const reasons = [
     "Because you make me smile every single day.",
     "Because you have the most beautiful smile.",
@@ -7,32 +8,48 @@ const reasons = [
 ];
 // ---------------------
 
+const loginScreen = document.getElementById('login-screen');
+const loginBtn = document.getElementById('loginBtn');
+const passwordInput = document.getElementById('passwordInput');
+const errorMsg = document.getElementById('error-msg');
+const audio = document.getElementById('bgMusic');
+
 const yesBtn = document.getElementById('yesBtn');
 const reasonBtn = document.getElementById('reasonBtn');
 const reasonDisplay = document.getElementById('reasonDisplay');
-const audio = document.getElementById('bgMusic');
 
-// 1. The "YES" Button - Plays music and throws confetti
+// 1. LOGIN LOGIC
+loginBtn.addEventListener('click', () => {
+    if (passwordInput.value === secretPassword) {
+        // Password Correct:
+        loginScreen.style.opacity = '0'; // Fade out
+        setTimeout(() => {
+            loginScreen.style.display = 'none'; // Remove
+        }, 1000);
+        
+        // START MUSIC AUTOMATICALLY
+        audio.play().catch(e => console.log("Audio issue:", e));
+        
+        // Start Hearts
+        createHearts(20);
+    } else {
+        // Password Wrong:
+        errorMsg.style.display = 'block';
+        passwordInput.value = ''; // Clear input
+    }
+});
+
+// 2. The "YES" Button
 yesBtn.addEventListener('click', () => {
-    // Play Music
-    audio.play().catch(e => console.log("Audio requires interaction first"));
-    
-    // Confetti Explosion
     createHearts(100);
-    
-    // Alert Message
-    alert("I like you so much! ❤");
-    
-    // Change button text
+    alert("I love you so much! ❤");
     yesBtn.innerHTML = "Forever & Always ❤";
 });
 
-// 2. The "Reasons" Generator
+// 3. The "Reasons" Generator
 reasonBtn.addEventListener('click', () => {
     const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
     reasonDisplay.innerText = randomReason;
-    
-    // Add a small heart animation on click
     createHearts(5);
 });
 
