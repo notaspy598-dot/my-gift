@@ -1,16 +1,13 @@
 // --- CONFIGURATION ---
 const reasons = [
-    "Because you make me laugh every single day.",
+    "Because you make me smile every single day.",
     "Because you have the most beautiful smile.",
-    "Because you support my dreams.",
-    "Because you make the best coffee.",
-    "Because I can be myself around you.",
-    "Because you are my best friend."
+    "Because you gave me something ❤.",
+    "Because I can be myself around you."
 ];
 // ---------------------
 
 const yesBtn = document.getElementById('yesBtn');
-const noBtn = document.getElementById('noBtn');
 const reasonBtn = document.getElementById('reasonBtn');
 const reasonDisplay = document.getElementById('reasonDisplay');
 const audio = document.getElementById('bgMusic');
@@ -24,26 +21,13 @@ yesBtn.addEventListener('click', () => {
     createHearts(100);
     
     // Alert Message
-    alert("YAY! I love you! ❤ (Listen to the music!)");
+    alert("I yearn for you so much! ❤");
     
     // Change button text
-    yesBtn.innerHTML = "I Love You Too! ❤";
+    yesBtn.innerHTML = "Forever & Always ❤";
 });
 
-// 2. The "NO" Button - Runs away when hovered over
-noBtn.addEventListener('mouseover', moveButton);
-noBtn.addEventListener('touchstart', moveButton); // For mobile
-
-function moveButton() {
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-    
-    noBtn.style.position = 'fixed'; // Make it break out of the layout
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
-}
-
-// 3. The "Reasons" Generator - Shows a new reason on click
+// 2. The "Reasons" Generator
 reasonBtn.addEventListener('click', () => {
     const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
     reasonDisplay.innerText = randomReason;
