@@ -1,12 +1,10 @@
 // --- CONFIGURATION ---
 const secretPassword = "1812"; // CHANGE THIS TO YOUR PASSWORD
 const reasons = [
-    "Because you make me laugh every single day.",
+    "Because you make me smile every single day.",
     "Because you have the most beautiful smile.",
-    "Because you support my dreams.",
-    "Because you make the best coffee.",
-    "Because I can be myself around you.",
-    "Because you are my best friend."
+    "Because you gave me something ;) ❤.",
+    "Because I can be myself around you."
 ];
 // ---------------------
 
@@ -91,3 +89,4 @@ function createHearts(amount) {
         setTimeout(() => heart.remove(), 6000);
     }
 }
+
